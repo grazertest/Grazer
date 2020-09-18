@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeTest;
 
 
 public class UrlLaunching {
-		String paramUrl ="", Chromepath ="", firefoxpath ="", browsparam = "";
+		String paramUrl ="", Chromepath ="", firefoxpath ="", browsparam = ""; public WebDriver driver;
 		String path = System.getProperty("user.dir"); 
 		@BeforeTest
 		public String getDriverPath(String userparam) 
@@ -24,7 +24,7 @@ public class UrlLaunching {
 		        if (browsparam.contains("chrome")) 
 		        {
 					System.setProperty("webdriver.chrome.driver",path+"\\alldrivers\\chromedriver.exe");
-		        	WebDriver driver= new ChromeDriver();
+		            driver= new ChromeDriver();
 		        	driver.get(prop.getProperty("url"));
 		        	driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
 		        	driver.manage().window().maximize();
