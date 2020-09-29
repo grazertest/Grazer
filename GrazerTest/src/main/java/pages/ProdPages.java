@@ -2,6 +2,7 @@ package pages;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -50,6 +51,7 @@ public class ProdPages extends basePackage.TestBase {
 	@FindBy(xpath = "//h5[contains(text(),'BEEF')]") //  beef
 	WebElement Beef_btn;
 	
+	
 	@FindBy(xpath = "///h5[contains(text(),'PORK ')]") //  Pork
 	WebElement Pork_btn;
 	
@@ -67,15 +69,35 @@ public class ProdPages extends basePackage.TestBase {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void prodselection()
+	public AuctionPage prodselection()  // Need to change the script 
 	{
-
+		if(Beef_btn.isDisplayed()==true)
+		{
+			Beef_btn.click();
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+			SelecttheProd.click();
+		}
+		else if(Pork_btn.isDisplayed()==true)
+		{
+			Pork_btn.click();
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+			SelecttheProd.click();
+		}
 		
-		
+		else if (Goat_btn.isDisplayed()==true)
+		{
+			Goat_btn.click();
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+			SelecttheProd.click();
+		}
+		else if (Lamb_btn.isDisplayed()==true)
+		{
+			Lamb_btn.click();
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+			SelecttheProd.click();
+		}
+			return new AuctionPage();
+	}
+			
 	}	
 	
-}
-
-
-
-

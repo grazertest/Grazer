@@ -6,10 +6,13 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 //import com.crm.qa.util.TestUtil;
@@ -58,7 +61,19 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 		driver.manage().timeouts().pageLoadTimeout(2000, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-		
+		String title = driver.getTitle();
+    	if(title.equals("Grazr"))
+    	{
+    		System.out.println("Login Successfully");
+    		WebElement Listings =driver.findElement(By.xpath("//a[contains(text(),'Listings')]")); //static Elements
+    		WebElement aboutus = driver.findElement(By.xpath("//a[contains(text(),'ABOUT US ')]"));
+    		WebElement contactus = driver.findElement(By.xpath("//a[contains(text(),'CONTACT US ')]"));
+    	}
+    	else
+    	{
+    		driver.close();
+    		System.exit(0);
+    	}	 
 		
 	}
 

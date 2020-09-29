@@ -28,9 +28,7 @@ public class LoginPage extends basePackage.TestBase {
 	@FindBy(xpath="//a[contains(text(),'here')]")
 	WebElement RecoverPassword;
 	
-	@FindBy(xpath="//a[contains(text(),'Listings')]")
-	WebElement Listings;
-	
+	// Initializing the Page Objects:
 	public LoginPage(){
 		PageFactory.initElements(driver, this);
 	}
@@ -47,5 +45,4 @@ public class LoginPage extends basePackage.TestBase {
 		return new Homepage();
 	}
 
-	
 }
