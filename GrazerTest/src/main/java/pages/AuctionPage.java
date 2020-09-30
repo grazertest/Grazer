@@ -24,7 +24,6 @@ public class AuctionPage extends basePackage.TestBase  {
 	@FindBy(xpath = "(//label[contains(text(),'Quarter')])[4]")  
 	WebElement shared_Prod_4;
 	
-	
 	@FindBy(xpath = "//button[contains(text(),'Buy now')]")  
 	WebElement buynow;
 	
@@ -63,13 +62,11 @@ public class AuctionPage extends basePackage.TestBase  {
 	@FindBy(xpath = "//div[contains(text(),'Payment')]")  
 	WebElement PaymentText;
 	
-	
 	public AuctionPage()
 	{
 		PageFactory.initElements(driver, this);
 		
 	}
-	
 	public boolean verifyPaymenent(){
 		return PaymentText.isDisplayed();
 	}
@@ -81,17 +78,12 @@ public class AuctionPage extends basePackage.TestBase  {
 		if(Whole_Prod.isDisplayed()==true)
 		{
 			buynow.click();
-			
-			
-			
+					
 		}
 		else if(shared_Prod_1.isSelected()||shared_Prod_2.isSelected()||shared_Prod_3.isSelected()||shared_Prod_4.isSelected())
 		{
-	
 			buynow.click();
 		}
-		
 	}
-	
 
 }

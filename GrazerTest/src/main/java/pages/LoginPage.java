@@ -44,5 +44,4 @@ public class LoginPage extends basePackage.TestBase {
 		Loginbtn.click();
 		return new Homepage();
 	}
-
 }
