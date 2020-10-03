@@ -62,6 +62,21 @@ public class AuctionPage extends basePackage.TestBase  {
 	@FindBy(xpath = "//div[contains(text(),'Payment')]")  
 	WebElement PaymentText;
 	
+	@FindBy(xpath = "//input[@name='cardNumber']")  
+	WebElement cardNumber;
+	
+	@FindBy(xpath = "//input[@name='userName']")  
+	WebElement cardName;
+	
+	@FindBy(xpath = "//input[@name='expYear']")  
+	WebElement expYear;
+	
+	@FindBy(xpath = "//input[@name='expMonth']")  
+	WebElement expMonth;
+	
+	@FindBy(xpath = "//button[contains(text(),'Proceed to Pay ')]")  
+	WebElement ProceedtoPay;
+	
 	public AuctionPage()
 	{
 		PageFactory.initElements(driver, this);
@@ -71,19 +86,46 @@ public class AuctionPage extends basePackage.TestBase  {
 		return PaymentText.isDisplayed();
 	}
 	
-	public void prodbuying()
+	public tracking prodbuying()
 	{
 		//whole prod
 		
 		if(Whole_Prod.isDisplayed()==true)
 		{
 			buynow.click();
+			
+			if(cardNumber.isDisplayed()==true)
+			{
+				cardName.sendKeys("test");
+				expYear.sendKeys("2025");
+				expMonth.sendKeys("09");
+				ProceedtoPay.click();
+				
+				return new tracking();
+			}
+			else
+			{	
+				// Prod Not saving. Later ll add cont
+			}
 					
 		}
 		else if(shared_Prod_1.isSelected()||shared_Prod_2.isSelected()||shared_Prod_3.isSelected()||shared_Prod_4.isSelected())
 		{
 			buynow.click();
+			if(cardNumber.isDisplayed()==true)
+			{
+				cardName.sendKeys("test");
+				expYear.sendKeys("2025");
+				expMonth.sendKeys("09");
+				ProceedtoPay.click();
+				
+				return new tracking();
 		}
+			else
+			{
+							// Prod Not saving. Later ll add cont
+			}
 	}
-
+		return new tracking();
+}
 }

@@ -33,11 +33,11 @@ public class LoginPage extends basePackage.TestBase {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public String validateLoginPageTitle(){
+	public static String validateLoginPageTitle(){
 		return driver.getTitle();
 	}
 	
-	public Homepage Home(String username, String Password)
+	public  Homepage Home(String username, String Password)
 	{
 		this.EmailAddress.sendKeys(username);
 		this.Password.sendKeys(Password);

@@ -56,5 +56,11 @@ public class signup_page extends basePackage.TestBase {
 				Register_btn.click();
 			}
 			return new LoginPage();
-		}	
+		}
+		
+		public void titlecheck()
+		{
+			Register_Tagname.getText();
+		}
+		
 }
