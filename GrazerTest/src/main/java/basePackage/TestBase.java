@@ -61,6 +61,8 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 		driver.manage().timeouts().pageLoadTimeout(2000, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+		WebElement Loginbtn = driver.findElement(By.xpath("//a[contains(text(),'Login')]"));
+		Loginbtn.click();
 		String title = driver.getTitle();
     	if(title.equals("Grazr"))
     	{

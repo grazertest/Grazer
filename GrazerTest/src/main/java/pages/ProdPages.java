@@ -8,10 +8,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class ProdPages extends basePackage.TestBase {
 
 	//seller Product Post fields
+	
+	@FindBy(xpath = "//select[@class='form-control D-input ']")  
+	WebElement Livestockdetails;
 	
 	@FindBy(xpath = "//input[@type='number']")  
 	WebElement Price;
@@ -98,6 +102,22 @@ public class ProdPages extends basePackage.TestBase {
 		}
 			return new AuctionPage();
 	}
+	 public void ListaProduct() throws InterruptedException
+	 {
+		 Select livestock = new Select(Livestockdetails);
+		 livestock.selectByIndex(2); // select the index
+		 Price.sendKeys("50");
+		 title.sendKeys("testing");
+		 Description.sendKeys("Description");
+		 Thread.sleep(2000);
+		 driver.findElement(By.xpath("(//span[@class='checkmark'])[3]"));
+		 driver.findElement(By.xpath("//button[contains(text(),'Close')]")).click();
+		 WholeProduct.click();
+		 Uploadfile.sendKeys("C:\\Users\\User\\Desktop\\Grazr\\Images\\meats");
+		 ProceedToNextStep.click();
+		 driver.findElement(By.xpath("//button[contains(text(),'List my product')]")).click();
+		 
+	 }
 			
 	}	
 	

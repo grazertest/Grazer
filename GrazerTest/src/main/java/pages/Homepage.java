@@ -57,6 +57,30 @@ public class Homepage extends basePackage.TestBase {
 	@FindBy(xpath = "//button[contains(text(),'Save')]") 
 	WebElement Savebtn;
 	
+	@FindBy(xpath = "//button[contains(text(),'Choose Other Processor')]") 
+	WebElement ChooseOtherProcessor;
+	
+	@FindBy(xpath = "//span[@class='checkmark']") 
+	WebElement Checkmark;
+	
+	@FindBy(xpath = "//input[@name='userName']") 
+	WebElement cardname;
+	
+	@FindBy(xpath = "//button[contains(text(),'Close')]") 
+	WebElement Close_btn;
+	
+	@FindBy(xpath = "//input[@name='expYear']") 
+	WebElement expYear;
+	
+	@FindBy(xpath = "//input[@name='expMonth']") 
+	WebElement expMonth;
+	
+	@FindBy(xpath = "//button[contains(text(),'Make Payment')]") 
+	WebElement MakePayment;
+	
+	@FindBy(xpath = "//button[@type='submit']") 
+	WebElement proceedtopay;
+	
 	//sellerprofile
 	
 	@FindBy(xpath = "//h4[contains(text(),'farm profile')]")
@@ -116,7 +140,7 @@ public class Homepage extends basePackage.TestBase {
 	WebElement Closebtn;
 
 	
-	//constructor Initiatedm
+	//constructor Initiated
 	public Homepage() 
 	{
 		PageFactory.initElements(driver, this);
@@ -126,8 +150,11 @@ public class Homepage extends basePackage.TestBase {
 	{
 		if(Browseproducts.isDisplayed()==true)
 		{
-		Browseproducts.click();
-			if(personaldetails.isDisplayed()==true) //Kindly Update the profile
+			if(MakePayment.isDisplayed()==false)
+				{
+			
+				Browseproducts.click();
+				if(personaldetails.isDisplayed()==true) 
 				{
 				
 				MobileNumber.sendKeys("1234567890");
@@ -140,6 +167,24 @@ public class Homepage extends basePackage.TestBase {
 				Select city = new Select(citySelection);
 				sel.selectByIndex(1);
 				Savebtn.click();
+				}
+			else
+				{
+				ChooseOtherProcessor.click();
+				Thread.sleep(10);
+				Checkmark.click();
+				Thread.sleep(10);
+				Close_btn.click();
+				}
+				}
+			else
+			{
+				MakePayment.click();
+				cardname.sendKeys("text");
+				expYear.sendKeys("2024");
+				expMonth.sendKeys("09");
+				proceedtopay.click();
+				Thread.sleep(5000);
 			}
 		}
 		else if(ListProduct.isDisplayed()==true)
@@ -150,6 +195,8 @@ public class Homepage extends basePackage.TestBase {
 			}
 			
 			ListProduct.click();
+			ProdPages prod = new ProdPages();
+			prod.ListaProduct();
 		}
 		
 		else if (MyCalender.isDisplayed()==true)
@@ -176,9 +223,7 @@ public class Homepage extends basePackage.TestBase {
 			Hangingweight.sendKeys("20");
 			charge_pound.sendKeys("5");
 			Submit.click();
-			Closebtn.click();
-			
-			
+			Closebtn.click();		
 			
 //			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
 //			   LocalDateTime now = LocalDateTime.now();  
@@ -205,7 +250,7 @@ public class Homepage extends basePackage.TestBase {
 //						  System.out.println("product not displayed in the calender. Pick another date");
 //					  }
 //				  }
-//			  }	   
+//			    
 		}
 		return new ProdPages();
 	}
